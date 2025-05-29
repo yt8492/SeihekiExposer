@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SeihekiExposer"
 include(":app")
- 
+include(":server")
