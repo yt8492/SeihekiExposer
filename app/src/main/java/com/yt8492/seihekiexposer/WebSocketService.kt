@@ -64,7 +64,7 @@ class WebSocketService : Service() {
       },
     )
     coroutineScope.launch {
-      client.ws("ws://10.0.2.2:8080/ws") {
+      client.ws("wss://seiheki.yt8492.com/ws") {
         // Receive a response from the WebSocket server
         while (true) {
           val frame = incoming.receive()
