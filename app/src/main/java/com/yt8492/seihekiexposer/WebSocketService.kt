@@ -75,12 +75,12 @@ class WebSocketService : Service() {
                 ?.filter { it.isDirectory && it.name?.startsWith(".") == false }
                 ?.joinToString(
                   separator = ",",
-                  prefix = "{",
-                  postfix = "}",
+                  prefix = "[",
+                  postfix = "]",
                 ) {
                   "\"${it.name}\""
                 }
-                ?: "{}"
+                ?: "[]"
             }
             // Send the response back to the WebSocket server
             outgoing.send(Frame.Text(response))

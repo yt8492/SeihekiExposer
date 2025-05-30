@@ -65,7 +65,7 @@ fun Application.module() {
     }
 
     // HTTP GETエンドポイント
-    get("/seiheki") {
+    get("/") {
       val connection = mutex.withLock { wsConnection }
       if (connection == null) {
         call.respondText("WebSocket not connected", status = HttpStatusCode.ServiceUnavailable)
