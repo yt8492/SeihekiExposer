@@ -93,7 +93,11 @@ class WebSocketService : Service() {
         }
       }
     }
-    return Service.START_STICKY
+    return Service.START_REDELIVER_INTENT
+  }
+
+  override fun onTimeout(startId: Int, fgsType: Int) {
+    stopSelf(startId)
   }
 
   companion object {
