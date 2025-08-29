@@ -69,7 +69,7 @@ class WebSocketService : Service() {
         while (true) {
           val frame = incoming.receive()
           if (frame is Frame.Text && frame.readText() == "get") {
-            val response = with(Dispatchers.Main) {
+            val array = with(Dispatchers.Main) {
               DocumentFile.fromTreeUri(this@WebSocketService, uri)
                 ?.listFiles()
                 ?.filter { it.isDirectory && it.name?.startsWith(".") == false }
@@ -82,6 +82,11 @@ class WebSocketService : Service() {
                 }
                 ?: "[]"
             }
+            val response = """
+              {
+                "titles": $array
+              }
+            """.trimIndent()
             // Send the response back to the WebSocket server
             outgoing.send(Frame.Text(response))
           }
